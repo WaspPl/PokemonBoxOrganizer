@@ -198,7 +198,6 @@ function replaceArrayInString(str, arr, replacement){
 function AddToList(pokemonName) {
   wordsToRemove = ["-antique","-artisan","-masterpiece","--own-tempo"]
   pokemonNameImg=replaceArrayInString(pokemonName,wordsToRemove,"")
-  console.log(pokemonNameImg)
   const $boxes = document.querySelector('.boxes');
   pokemonCount++;
   
