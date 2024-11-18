@@ -1,0 +1,401 @@
+@font-face {
+    font-family: "Pokemon";
+    src: url("../fonts/Pokemon.ttf") format("truetype");
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    overflow-x: hidden; /* Prevents horizontal scroll */
+    box-sizing: border-box;
+    font-family: "PT Sans", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: #fff;
+}
+button{
+    font-family: "PT Sans", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: #fff;
+    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+    cursor:pointer;
+}
+img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit:fill;
+}
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+.draggable-initialized>.removeButton{
+    display:block;
+}
+
+.navbar {
+    height: 10vh;
+    width: 100%;
+    background-color: #1ca4a6;
+    position: relative;
+}
+
+#attribution{
+    z-index: 2;
+    position:absolute;
+    right: 5px;
+    font-size: 1vw;
+}
+
+#logo{
+    font-family: Pokemon;
+    font-size: 8vh;
+    -webkit-text-fill-color: #f2e61c; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 7px;
+  -webkit-text-stroke-color: #356abc;
+  paint-order: stroke fill;
+  margin-bottom: 2vh;
+  user-select: none;
+}
+.dialog{
+    z-index: 100;
+    border-radius: 10px;
+    text-align: justify;
+  text-justify: inter-word;
+}
+.dialogButtons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: auto;
+    margin-bottom: 0;
+}
+.dialogButtons>button{
+    margin-left: 10px;
+    margin-right:10px;
+}
+.inputBox{
+    display: flex;
+    flex-direction: row;
+    padding:15px;
+    margin: 10px;
+    justify-content: space-evenly;
+    box-sizing: border-box;
+    max-height: 100px;
+}
+#pokemonAddInputBox{
+    border-radius: 60px;
+    background: linear-gradient(to bottom, red 0px 42px, black 43px 47px, white 48px 90px, transparent 91px);
+    border:5px black solid;
+}
+
+.leftButtons{
+    display:flex;
+    flex-direction: column;
+    padding: 0;
+    margin:0;
+    justify-content: space-evenly;
+}
+#presetAddInputBox{
+    border-radius: 60px;
+    background:
+    linear-gradient(to bottom, transparent 0px 42px, black 43px 47px, white 48px 90px, transparent 91px),
+    radial-gradient(blue 50%, transparent 51% 100%),
+    conic-gradient(at 50% 50%, transparent 0deg 49deg, red 50deg 70deg, transparent 71deg 289deg, red 290deg 310deg, transparent 311deg 360deg),
+  linear-gradient(to bottom, blue 0px 42px, black 43px 47px, white 48px 90px, transparent 91px);
+    border:5px black solid;
+    
+}
+#downloadButton{
+    flex-direction: column;
+    width: 100px;
+    padding: 15px;
+    margin: 10px;
+    margin-bottom: 0;
+    height: 100px;
+    flex-shrink: 0;
+    border-radius: 100px;
+    background: 
+    radial-gradient(lightgray 8px,#222224 9px,lightgray 10px 13px,#222224 14px 15px,transparent 16px),
+    linear-gradient(to bottom, transparent 0px 42px, black 43px 47px, white 48px 90px),
+    linear-gradient(to right, #222224 10px, #ffde2b 10px 25px, transparent 25px 65px, #ffde2b 65px 80px, #222224 80px),
+    radial-gradient(transparent 0px 40px,#ffde2b 41px 50px),
+    linear-gradient( to bottom, #352e2e 45px,transparent 45px 90px)  
+        ;
+    border:5px black solid;
+    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+    box-sizing: border-box;
+    
+}
+#downloadButton:hover{
+    background:
+    linear-gradient(rgba(0,0,0,0.1) 0% 100%), 
+    radial-gradient(lightgray 8px,#222224 9px,lightgray 10px 13px,#222224 14px 15px,transparent 16px),
+    linear-gradient(to bottom, transparent 0px 42px, black 43px 47px, white 48px 90px),
+    linear-gradient(to right, #222224 10px, #ffde2b 10px 25px, transparent 25px 65px, #ffde2b 65px 80px, #222224 80px),
+    radial-gradient(transparent 0px 40px,#ffde2b 41px 50px),
+    linear-gradient( to bottom, #352e2e 45px,transparent 45px 90px)  
+        ;
+}
+#importButton{
+    flex-direction: column;
+    width: 100px;
+    padding: 15px;
+    margin: 10px;
+    height: 100px;
+    flex-shrink: 0;
+    border-radius: 100px;
+    background: 
+    radial-gradient(lightgray 8px,#222224 9px,lightgray 10px 13px,#222224 14px 15px,transparent 16px),
+    linear-gradient(to bottom, transparent 0px 42px, black 43px 47px, transparent 48px 90px),
+    linear-gradient(to left bottom, transparent 43%, #f2e61c 43.1% 56.9%, transparent 57% 100%),
+    linear-gradient(to right bottom, transparent 43%, #f2e61c 43.1% 56.9%, transparent 57% 100%),
+    linear-gradient(to left bottom, #448ed3 30%, transparent 30.1% 69.9%, #448ed3 70% 100%),
+    linear-gradient(to right bottom, #448ed3 30%, #f2e61c 30.1% 69.9%, #448ed3 70% 100%)
+        ;
+    border:5px black solid;
+    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+    box-sizing: border-box;
+    
+}
+#importButton:hover{
+    background: 
+    linear-gradient(rgba(0,0,0,0.1) 0% 100%), 
+    radial-gradient(lightgray 8px,#222224 9px,lightgray 10px 13px,#222224 14px 15px,transparent 16px),
+    linear-gradient(to bottom, transparent 0px 42px, black 43px 47px, transparent 48px 90px),
+    linear-gradient(to left bottom, transparent 43%, #f2e61c 43.1% 56.9%, transparent 57% 100%),
+    linear-gradient(to right bottom, transparent 43%, #f2e61c 43.1% 56.9%, transparent 57% 100%),
+    linear-gradient(to left bottom, #448ed3 30%, transparent 30.1% 69.9%, #448ed3 70% 100%),
+    linear-gradient(to right bottom, #448ed3 30%, #f2e61c 30.1% 69.9%, #448ed3 70% 100%)
+        ;
+}
+.dropdownGroup{
+    max-width: 280px;
+}
+.inputBoxLower{
+    max-width:240px;
+    display: flex;
+    flex-direction: column;
+}
+.inputDropdown{
+    border-radius: 60px;
+    text-align: center;
+    width: 100%;
+}
+.addButton{
+    aspect-ratio: 1/1;
+    background: radial-gradient(
+        lightgray 16px,
+        black 17px,
+        lightgray 18px 27px,
+        black 28px 30px,
+        transparent 31px
+      );
+    border-radius: 60px;
+    width:60px;
+    height: 60px;
+    flex-shrink: 0;
+}
+.addButton:hover{
+    background: radial-gradient(
+        silver 16px,
+        black 17px,
+        silver 18px 27px,
+        black 28px 30px,
+        transparent 31px
+      );
+}
+.placeholderImg{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 80%; 
+}
+.pokemonName{
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 0.9vw;
+    height: 20%;
+    z-index: 1;
+    -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: black;
+    paint-order: stroke fill;
+}
+.removeButton{
+    position: absolute;
+    top:5%;
+    right:5%;
+    font-weight: bolder;
+    box-sizing: border-box;
+    cursor: pointer;
+    color: red;
+    display: none;
+}
+.removeBoxButton{
+    position: absolute;
+    top:1%;
+    right:2%;
+    box-sizing: border-box;
+    cursor: pointer;
+    color: red;
+}
+
+.main-left {
+    width: 300px;
+    box-sizing: border-box;
+    background: radial-gradient(at 100% 0%, #abeff8, transparent);
+    background-color: #fafcf4;
+    border: 10px #1ca4a6 solid;
+    border-top: 0;
+    flex-shrink: 0;
+    height: 90vh;
+
+
+}
+.main-left-inside{
+    display: flex;
+    height:100%;
+    flex-direction: column;
+    flex-shrink: 0;
+    justify-content: space-evenly;
+}
+.scrollbar {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scrollbar-color: #1ca4a6 transparent;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.mainContainer {
+    min-height: 90vh; /* Ensure it fills the viewport */
+    width: 100%;
+    background-color: #aaa;
+    display: flex;
+}
+
+.main-right {
+    flex-grow: 100;
+    max-height: 90vh;
+    background:
+    radial-gradient(at 0% 0%, #d0f5b2, transparent);
+    background-color: #abeff8;
+    padding-top: 0%;
+    position: relative;
+}
+
+#placeholderBox{
+    position: absolute;
+    top: 50%;  /* position the top  edge of the element at the middle of the parent */
+    left: 50%; /* position the left edge of the element at the middle of the parent */
+    transform: translate(-50%, -50%);
+    font-size: xx-large;
+    -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: black;
+  paint-order: stroke fill;
+  text-align: center;
+}
+.box {
+    padding: 2%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    background-color: #fafcf4;
+    border-radius: 1% 1% 5% 5%;
+}
+.boxcontainer{
+    position: relative;
+    margin: 5%;
+    margin-left: 16%;
+    margin-right: 16%;
+    border-radius: 5%;
+    background-color: #1ca4a6;
+    border: 10px #1ca4a6 solid;
+    border-bottom: 4px #1ca4a6 solid;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0;
+}
+
+.boxTitle {
+    width: 100%;
+    padding:2%;
+    text-align: center;
+    font-size:xx-large;
+    text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+
+}
+.pokemonImage{
+    height: 80%;   
+}
+.slot {
+    margin-top: calc(0.99% - 1px);
+    margin-bottom: calc(0.99% - 1px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border-radius: 20%;
+    width: 15%;
+    aspect-ratio: 1/1;
+    flex-grow: 0; 
+    background: radial-gradient( at 50% 50%,#d9f8ec 40%, transparent 70% 100%);
+    font-size: 1vw;
+    word-break: break-all;
+    
+}
+.hidden{
+    display: none;
+}
+
+.is-dragging {
+    opacity: 0.8;
+    z-index: 10; /* Brings the dragged element above others */
+    background-color: #ffde2b;
+}
+@media only screen and (max-width: 800px) {
+    .mainContainer{
+        flex-direction: column;
+    }
+    .inputBoxLower{
+        font-size: small;
+    }
+    .main-left{
+        width:100%;
+        height: fit-content;
+        position:sticky;
+        top:0px;
+        z-index: 12;
+    }
+    .main-left-inside{
+        width:100%;
+        height: fit-content;
+        flex-direction: row;
+    }
+    .scrollbar{
+        overflow-y:auto;
+    }
+    .main-right{
+        max-height: fit-content;
+    }
+    .boxcontainer{
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    #logo{
+        font-size: 8vw;
+        margin-bottom: 0;
+    }
+  }

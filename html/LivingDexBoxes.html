@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Draggable.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="./../css/LivingDexBoxes.css" rel="stylesheet">    
+</head>
+<body>
+    
+
+    <!--Actual website-->
+    <div class="navbar center">
+        <div id="logo">
+            <p>Pokemon Box Organizer</p>
+        </div>
+        <div id="attribution">
+            <p>by WaspPl</br>Sprites provided by</br><a href="https://pokemondb.net/sprites">Pokemondb.net</a></p>
+        </div>
+    </div>
+    <div class="mainContainer container">
+        <dialog id="ImportExcelDialog" class="dialog">
+            <div>
+                <p>For this option to work the excel file has to be formatted in a specific way.</br> Its main purpose is to you to be able to edit your previoulsy downloaded files.</br> If you want to import a file you made yourself, just remember to keep the correct formatting</br>(6 collumns wide, 1st row of a box is the box number and 7th is empty)</p>
+            </div>
+            <div class="dialogButtons" class="center">
+                <button id="dialogimportButton" value="" class="center" onclick="ImportExcel()">Import</button>
+                <button id="dialogCloseButtonImport" value="" class="center" onclick="dialogClose(`ImportExcelDialog`)">Close</button>
+            </div>
+        </dialog>
+        <dialog id="removeBoxDialog" class="dialog">
+            <div>
+                <p>Are you sure you want to remove this box?</p>
+            </div>
+            <div class="dialogButtons" class="center">
+                <button id="dialogRemoveBoxButton" value="" class="center" onclick="removeBox(this)">Remove</button>
+                <button id="dialogCloseButtonBox" value="" class="center" onclick="dialogClose(`removeBoxDialog`)">Close</button>
+            </div>
+        </dialog>
+        <dialog id="addPresetDialog" class="dialog">
+            <div>
+                <p>Are you sure you want to add this preset?</br>Adding pressets might cause a little bit of lag</p>
+            </div>
+            <div class="dialogButtons" class="center">
+                <button id="dialogAddPreset" value="" class="center" onclick="AddPreset()">Add</button>
+                <button id="dialogCloseButtonPreset" value="" class="center" onclick="dialogClose(`addPresetDialog`)">Close</button>
+            </div>
+        </dialog>
+        <div class="main-left">
+            <div class="main-left-inside">
+                <div class="dropdownGroup">
+                    <div class="inputBox" id="pokemonAddInputBox">
+                        <div id="pokemonTextInput" class="center inputBoxLower">
+                            <label for="pokemonInput">Enter a Pokemon here</label><br>
+                            <select id="pokemonInput" class="inputDropdown">
+                            </select>
+                        </div>
+                        <button id="addPokemon" class="center addButton" onclick="AddToBox(document.getElementById('pokemonInput').value)">Add</button>
+                    </div>
+                    <div class="inputBox" id="presetAddInputBox">
+                        <div id="pokemonPresetInput" class="center inputBoxLower">
+                            <label for="presetInput">Or choose a preset</label><br>
+                            <select id="presetInput" class="inputDropdown">
+                            </select>
+                        </div>
+                        <button id="addPokemon" class="center addButton" onclick="dialogOpen(`addPresetDialog`)">Add</button>
+                    </div>
+                </div>
+                <div class="leftButtons center">
+                    <button id="downloadButton" value="" class="center" onclick="DownloadExcel()">Export to Excel</button>
+                    <button id="importButton" value="" class="center" onclick="dialogOpen(`ImportExcelDialog`)">Import Excel file</button>
+                </div>
+            </div>
+        </div>
+        <div class="main-right scrollbar">
+            <div class="boxes"><div id="placeholderBox">Your Boxes will appear here</div></div>
+        </div>
+    </div>
+    
+    <script src="./../js//xlsx.bundle.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./../js//data.js"></script>
+    <script src="./../js/LivingDexBoxes.js"></script> 
+</body>
+</html>
