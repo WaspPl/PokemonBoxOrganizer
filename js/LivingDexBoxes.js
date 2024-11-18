@@ -204,6 +204,9 @@ function AddToList(pokemonName) {
   
 
   if (pokemonCount > boxCount * 30) {
+    if (boxCount==0){
+      document.getElementById(`placeholderBox`).style.display = "none";
+    }
     boxCount++;
     const $boxcontainer = document.createElement('div'); 
     const $box = document.createElement('div');
@@ -285,6 +288,9 @@ function removeBox() {
       title.nextElementSibling.nextElementSibling.classList = `box box${boxNrTemp}`
       boxNrTemp++
     });
+    if (boxCount==0){
+      document.getElementById(`placeholderBox`).style.display = "initial";
+    }
   }
 }
 
@@ -313,6 +319,9 @@ function keep30inboxes() {
       if ($current.children('.slot').eq(0).hasClass('emptySlot')) {
           $current.parent().remove();
           boxCount--;  
+          if (boxCount==0){
+            document.getElementById(`placeholderBox`).style.display = "initial";
+          }
           console.log('Box removed because it has only empty slots');
       }
   }
