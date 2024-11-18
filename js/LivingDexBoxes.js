@@ -324,6 +324,7 @@ function makeSlotsDraggable(slot) {
           bounds: ".boxes",
           autoScroll:2,
           dragClickables:true,
+          allowEventDefault:true,
           onDragStart() {
               this.startX = this.x;
               this.startY = this.y;
