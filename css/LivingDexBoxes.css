@@ -286,6 +286,7 @@ img {
 
 .main-right {
     flex-grow: 100;
+    min-height: 90vh;
     max-height: 90vh;
     background:
     radial-gradient(at 0% 0%, #d0f5b2, transparent);
