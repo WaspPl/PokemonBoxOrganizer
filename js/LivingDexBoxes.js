@@ -233,7 +233,7 @@ function AddToList(pokemonName) {
     newSlot.classList.add('slot', 'slotTaken', 'drag');
     newSlot.innerHTML = `
       <div class="pokemonImage">
-        <img src="https://img.pokemondb.net/sprites/home/normal/${pokemonNameImg}.png" alt="${pokemonName}" onerror="this.src='./../img/noImage.png'; this.className='placeholderImg'">
+        <img src="https://img.pokemondb.net/sprites/home/normal/${pokemonNameImg}.png" alt="${pokemonName}" onerror="this.src='./img/noImage.png'; this.className='placeholderImg'">
       </div>
       <div class="pokemonName">${pokemonName}</div>
       <div class="removeButton">x</div>
