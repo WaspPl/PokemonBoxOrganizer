@@ -10,9 +10,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
     <link href="./css/LivingDexBoxes.css" rel="stylesheet">    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css">
+    <!-- Include jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Include Chosen JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+
+
+
 </head>
 <body>
-    
 
     <!--Actual website-->
     <div class="navbar center">
@@ -60,7 +67,7 @@
                     <div class="inputBox" id="pokemonAddInputBox">
                         <div id="pokemonTextInput" class="center inputBoxLower">
                             <label for="pokemonInput">Enter a Pokemon here</label><br>
-                            <select id="pokemonInput" class="inputDropdown">
+                            <select id="pokemonInput" class="inputDropdown chosen-select">
                             </select>
                         </div>
                         <button id="addPokemon" class="center addButton" onclick="AddToBox(document.getElementById('pokemonInput').value)">Add</button>
@@ -68,7 +75,7 @@
                     <div class="inputBox" id="presetAddInputBox">
                         <div id="pokemonPresetInput" class="center inputBoxLower">
                             <label for="presetInput">Or choose a preset</label><br>
-                            <select id="presetInput" class="inputDropdown">
+                            <select id="presetInput" class="inputDropdown chosen-select">
                             </select>
                         </div>
                         <button id="addPokemon" class="center addButton" onclick="dialogOpen(`addPresetDialog`)">Add</button>
@@ -84,10 +91,12 @@
             <div class="boxes"><div id="placeholderBox">Your Boxes will appear here</div></div>
         </div>
     </div>
-    
+        
     <script src="./js//xlsx.bundle.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
     <script src="./js//data.js"></script>
-    <script src="./js/LivingDexBoxes.js"></script> 
+    <script src="./js/LivingDexBoxes.js"></script>
+        
 </body>
+
 </html>

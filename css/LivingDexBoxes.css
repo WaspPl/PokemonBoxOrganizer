@@ -257,6 +257,9 @@ img {
 
 
 }
+.chosen-single {
+    border-radius: 60px !important;
+}
 .main-left-inside{
     display: flex;
     height:100%;

@@ -41,7 +41,7 @@ var boxCount = 0;
 var pokemonCount = 0
 let boxToRemove = null;
 
-var input = document.getElementById("pokemonInput");
+var input = document.getElementById("pokemonAddInputBox");
 
 var options = "";
   
@@ -57,6 +57,13 @@ for(let i=0; i< presets.length; i++){
 options+= "<option value='"+presets[i].toLowerCase()+"'>"+presets[i]+"</option>";
 }
 $("#presetInput").html(options);
+
+  $(".chosen-select").chosen({
+      placeholder_text_multiple: "Select some options...",
+      no_results_text: "No results found!"
+  });
+
+
 
 const observer = new IntersectionObserver((entries) => {
 entries.forEach(entry => {
