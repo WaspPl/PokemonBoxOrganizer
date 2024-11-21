@@ -257,8 +257,28 @@ img {
 
 
 }
-.chosen-single {
+.chosen-container{
+    font-weight: normal;
+}
+.chosen-single{
     border-radius: 60px !important;
+    background: white !important;
+    
+}
+.chosen-drop{
+    border-bottom-left-radius: 15px !important;
+    border-bottom-right-radius: 15px !important;
+}
+.chosen-search-input{
+    border-radius: 50px !important;
+}
+.chosen-results{
+    scrollbar-width: none;
+}
+.chosen-results>.highlighted{
+    background-image: none;
+    background: #1ca4a6 !important;
+    border-radius: 60px;
 }
 .main-left-inside{
     display: flex;
