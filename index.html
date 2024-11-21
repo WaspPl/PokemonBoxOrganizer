@@ -61,32 +61,34 @@
                 <button id="dialogCloseButtonPreset" value="" class="center" onclick="dialogClose(`addPresetDialog`)">Close</button>
             </div>
         </dialog>
-        <div class="main-left">
-            <div class="main-left-inside">
-                <div class="dropdownGroup">
-                    <div class="inputBox" id="pokemonAddInputBox">
-                        <div id="pokemonTextInput" class="center inputBoxLower">
-                            <label for="pokemonInput">Enter a Pokemon here</label><br>
-                            <select id="pokemonInput" class="inputDropdown chosen-select">
-                            </select>
+        
+            <div class="main-left">
+                <div class="main-left-inside">
+                    <div class="dropdownGroup">
+                        <div class="inputBox" id="pokemonAddInputBox">
+                            <div id="pokemonTextInput" class="center inputBoxLower">
+                                <label for="pokemonInput">Enter a Pokemon here</label><br>
+                                <select id="pokemonInput" class="inputDropdown chosen-select">
+                                </select>
+                            </div>
+                            <button id="addPokemon" class="center addButton" onclick="AddToBox(document.getElementById('pokemonInput').value)">Add</button>
                         </div>
-                        <button id="addPokemon" class="center addButton" onclick="AddToBox(document.getElementById('pokemonInput').value)">Add</button>
-                    </div>
-                    <div class="inputBox" id="presetAddInputBox">
-                        <div id="pokemonPresetInput" class="center inputBoxLower">
-                            <label for="presetInput">Or choose a preset</label><br>
-                            <select id="presetInput" class="inputDropdown chosen-select">
-                            </select>
+                        <div class="inputBox" id="presetAddInputBox">
+                            <div id="pokemonPresetInput" class="center inputBoxLower">
+                                <label for="presetInput">Or choose a preset</label><br>
+                                <select id="presetInput" class="inputDropdown chosen-select">
+                                </select>
+                            </div>
+                            <button id="addPokemon" class="center addButton" onclick="dialogOpen(`addPresetDialog`)">Add</button>
                         </div>
-                        <button id="addPokemon" class="center addButton" onclick="dialogOpen(`addPresetDialog`)">Add</button>
                     </div>
-                </div>
-                <div class="leftButtons center">
-                    <button id="downloadButton" value="" class="center" onclick="DownloadExcel()">Export to Excel</button>
-                    <button id="importButton" value="" class="center" onclick="dialogOpen(`ImportExcelDialog`)">Import Excel file</button>
+                    <div class="leftButtons center">
+                        <button id="downloadButton" value="" class="center" onclick="DownloadExcel()">Export to Excel</button>
+                        <button id="importButton" value="" class="center" onclick="dialogOpen(`ImportExcelDialog`)">Import Excel file</button>
+                    </div>
                 </div>
             </div>
-        </div>
+        
         <div class="main-right scrollbar">
             <div class="boxes"><div id="placeholderBox">Your Boxes will appear here</div></div>
         </div>

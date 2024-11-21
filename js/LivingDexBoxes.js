@@ -479,7 +479,7 @@ function removeFromList(){
 }
 //Scroll to the bottom of boxes after adding an entry
 function ScrollToBottom() { 
-  if (window.innerWidth>800){
+  
   $('.scrollbar').animate({ 
       scrollTop: ($(`.boxcontainer`).last().get(0).offsetTop)
      
@@ -487,15 +487,8 @@ function ScrollToBottom() {
   {queue: false }
   , 500);
   console.log($(`.box`).last().get(0).offsetTop) 
-}
-else{
-  $('body').animate({ 
-      scrollTop: ($(`.boxcontainer`).last().get(0).offsetTop)
-      
-  },
-  {queue: false }
-  , 500);
-} 
+
+   
 }
 
 

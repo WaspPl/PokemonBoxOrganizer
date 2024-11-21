@@ -254,6 +254,7 @@ img {
     border-top: 0;
     flex-shrink: 0;
     height: 90vh;
+    
 
 
 }
@@ -386,7 +387,7 @@ img {
 
 .is-dragging {
     opacity: 0.8;
-    z-index: 10; /* Brings the dragged element above others */
+    z-index: 10; 
     background-color: #ffde2b;
 }
 @media only screen and (max-width: 800px) {
@@ -399,8 +400,8 @@ img {
     .main-left{
         width:100%;
         height: fit-content;
-        position:sticky;
-        top:0px;
+        /* position:sticky;
+        top:0px; */
         z-index: 12;
     }
     .main-left-inside{
@@ -408,11 +409,14 @@ img {
         height: fit-content;
         flex-direction: row;
     }
-    .scrollbar{
+    /* .scrollbar{
         overflow-y:auto;
-    }
+    } */
     .main-right{
-        max-height: fit-content;
+        min-height: calc(90vh - 240px) !important;
+        max-height: calc(90vh - 240px) !important;
+        overflow-y: scroll;
+        width: 100%;
     }
     .boxcontainer{
         margin-left: 5%;
