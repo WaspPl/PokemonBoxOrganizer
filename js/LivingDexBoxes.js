@@ -79,6 +79,13 @@ entries.forEach(entry => {
 });
 });
 ;
+window.onbeforeunload = function() {
+  if (boxCount>0) {
+      return "Are you sure you want to leave? You can download the boxes to excel and edit again at any time.";
+  } else {
+     return;
+  }
+};
 
 //Execute a function when the user presses a key on the keyboard
 input.addEventListener("keypress", function(event) {
