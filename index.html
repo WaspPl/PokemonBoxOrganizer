@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokemon Box Organizer</title>
+    <link rel="icon" type="image/x-icon" href="./img/sprigatito.webp">
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Draggable.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,11 +24,14 @@
 
     <!--Actual website-->
     <div class="navbar center">
-        <div id="logo">
+        <div id="logoImage">
+            <img src="./img/sprigatito.webp">
+        </div>
+        <div id="logoText">
             <p>Pokemon Box Organizer</p>
         </div>
         <div id="attribution">
-            <p>by WaspPl</br>Sprites provided by</br><a href="https://pokemondb.net/sprites">Pokemondb.net</a></p>
+           
         </div>
     </div>
     <div class="mainContainer container">
@@ -91,7 +95,9 @@
         
         <div class="main-right scrollbar">
             <div class="boxes"><div id="placeholderBox">Your Boxes will appear here</div></div>
+            <div class="footer"> <p>by WaspPl</br>Sprites provided by <a href="https://pokemondb.net/sprites">Pokemondb.net</a></p></div>
         </div>
+        
     </div>
         
     <script src="./js//xlsx.bundle.js"></script>

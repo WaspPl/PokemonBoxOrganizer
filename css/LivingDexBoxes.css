@@ -37,6 +37,7 @@ img {
 }
 
 .navbar {
+    display: flex;
     height: 10vh;
     width: 100%;
     background-color: #1ca4a6;
@@ -44,15 +45,16 @@ img {
 }
 
 #attribution{
-    z-index: 2;
+    
     position:absolute;
     right: 5px;
+    width: 10%;
     font-size: 1vw;
 }
 
-#logo{
+#logoText{
     font-family: Pokemon;
-    font-size: 8vh;
+    font-size: 7vh;
     -webkit-text-fill-color: #f2e61c; /* Will override color (regardless of order) */
   -webkit-text-stroke-width: 7px;
   -webkit-text-stroke-color: #356abc;
@@ -60,6 +62,14 @@ img {
   margin-bottom: 2vh;
   user-select: none;
 }
+#logoImage{
+    flex-grow: 0;
+    height: 100%;
+    padding: 5px;
+    object-fit:scale-down;
+    margin-right: 2%;
+}
+
 .dialog{
     z-index: 100;
     border-radius: 10px;
@@ -292,6 +302,7 @@ img {
     overflow-y: scroll;
     overflow-x: hidden;
     scrollbar-color: #1ca4a6 transparent;
+    
 }
 
 .center {
@@ -309,6 +320,8 @@ img {
 }
 
 .main-right {
+    display: flex;
+    flex-direction: column;
     flex-grow: 100;
     min-height: 90vh;
     max-height: 90vh;
@@ -317,6 +330,14 @@ img {
     background-color: #abeff8;
     padding-top: 0%;
     position: relative;
+}
+
+.footer{
+    background-color: #1ca4a6;
+    width: 100%;
+    margin-top: auto;
+    padding-right: 1em;
+    padding-left: 1em;
 }
 
 #placeholderBox{
@@ -350,7 +371,7 @@ img {
     border-bottom: 4px #1ca4a6 solid;
     display: flex;
     flex-direction: column;
-    margin-bottom: 0;
+    
 }
 
 .boxTitle {
@@ -422,7 +443,7 @@ img {
         margin-left: 5%;
         margin-right: 5%;
     }
-    #logo{
+    #logoText{
         font-size: 8vw;
         margin-bottom: 0;
     }
