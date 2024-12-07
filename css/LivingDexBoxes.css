@@ -412,11 +412,17 @@ img {
     background-color: #ffde2b;
 }
 @media only screen and (max-width: 800px) {
+    .leftButtons{
+        max-width: 40%;
+    }
+    .dropdownGroup{
+        max-width: 60%;
+    }
     .mainContainer{
         flex-direction: column;
     }
     .inputBoxLower{
-        font-size: small;
+        font-size: x-small;
     }
     .main-left{
         width:100%;

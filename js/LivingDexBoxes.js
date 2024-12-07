@@ -1,7 +1,7 @@
 
 //old function but i decided to keep it just in case
 /*function OrganiseIntoBoxes() {
-    var listItems = document.getElementsByClassName('ListPokemonName'),
+    let listItems = document.getElementsByClassName('ListPokemonName'),
 
      PokemonSplit = map(listItems, getText);
 
@@ -35,28 +35,48 @@
 
 
 //when page gets inicialised
-var boxCount = 0
-var pokemonCount = 0
-var boxCount = 0;
-var pokemonCount = 0
+function pageLoaded() {
+  let input = document.getElementById("pokemonAddInputBox");
+  input.addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      document.getElementById("addPokemon").click();
+    }
+  });
+
+}
+let boxCount = 0;
+let pokemonCount = 0
 let boxToRemove = null;
+const $boxes = document.querySelector(`.boxes`)
 
-var input = document.getElementById("pokemonAddInputBox");
-
-var options = "";
-  
-for(let i=0; i< all_pokemon_with_variants.length; i++){
-  options+= "<option value='"+all_pokemon_with_variants[i].toLowerCase()+"'>"+all_pokemon_with_variants[i]+"</option>";
+function createOptionsFromArray(array, elementId) {
+  const options = array.map(item => `<option value="${item.toLowerCase()}">${item}</option>`).join('');
+  document.getElementById(elementId).innerHTML = options;
 }
-$("#pokemonInput").html(options);
-all_pokemon_with_variants.shift()
 
-var options = "";
+// Populate Pokémon options
+createOptionsFromArray(all_pokemon_with_variants, "pokemonInput");
+all_pokemon_with_variants.shift(); // Removes the first element
 
-for(let i=0; i< presets.length; i++){
-options+= "<option value='"+presets[i].toLowerCase()+"'>"+presets[i]+"</option>";
+// Populate Preset options
+createOptionsFromArray(presets, "presetInput");
+
+
+
+// Resizing behavior
+function resizeHandler() {
+  let timeoutId = null;
+
+  //
+  $boxes.classList.add('hidden');
+  if (timeoutId) clearTimeout(timeoutId);
+
+  timeoutId = setTimeout(() => {
+      $boxes.classList.remove('hidden');
+  }, 500);
 }
-$("#presetInput").html(options);
+window.addEventListener('resize', resizeHandler);
 
   $(".chosen-select").chosen({
       placeholder_text_multiple: "Select some options...",
@@ -87,13 +107,6 @@ window.onbeforeunload = function() {
   }
 };
 
-//Execute a function when the user presses a key on the keyboard
-input.addEventListener("keypress", function(event) {
-  if (event.key === "Enter") {
-    event.preventDefault();
-    document.getElementById("addPokemon").click();
-  }
-});
 
 //open dialog box
 function dialogOpen(id){
@@ -108,12 +121,12 @@ function dialogClose(id){
 }
 
 function DownloadExcel() {
-  var listItems = document.getElementsByClassName('pokemonName');
-  var PokemonSplit = Array.from(listItems).map(item => item.innerText.trim());
+  let listItems = document.getElementsByClassName('pokemonName');
+  let PokemonSplit = Array.from(listItems).map(item => item.innerText.trim());
   
   const wb = XLSX.utils.book_new();
   const howManyBoxesNeeded = Math.ceil(PokemonSplit.length / 30);
-  var boxes = [];
+  let boxes = [];
   for (let boxNumber = 1; boxNumber <= howManyBoxesNeeded; boxNumber++) {
       //Add a title to the box
       boxes.push([
@@ -151,8 +164,8 @@ const columnCount = 6;
 
 for (let col = 0; col < columnCount; col++) {
     for (let row = 1; ; row++) {
-        var cellAddress = XLSX.utils.encode_cell({ c: col, r: row });
-        var cell = ws[cellAddress];
+        let cellAddress = XLSX.utils.encode_cell({ c: col, r: row });
+        let cell = ws[cellAddress];
         
         if (row>howManyBoxesNeeded*7) break;
         while (!cell||cell.v==undefined){ 
@@ -180,17 +193,25 @@ ws['!cols'] = new Array(columnCount).fill({ wch: columnWidth });
 }
 function ImportExcel(){
   dialogClose("ImportExcelDialog")
-  var input = document.createElement('input');
+  let input = document.createElement('input');
   input.type = 'file';
-  input.onchange = async e => { 
-    var file = e.target.files[0];
+  input.onchange = async e => {
+    let file = e.target.files[0];
+    
+    const validExtensions = ['xlsx', 'xls'];
+    const fileExtension = file.name.split('.').pop().toLowerCase();
+    
+    if (!validExtensions.includes(fileExtension)) {
+      alert("Invalid file type. Please upload an Excel file (.xlsx or .xls).");
+      return;
+    } 
     const arrayBuffer = await file.arrayBuffer();
     const workbook = XLSX.read(arrayBuffer, { type: 'array' });
 
-    var worksheet = workbook.Sheets[workbook.SheetNames[0]];
+    let worksheet = workbook.Sheets[workbook.SheetNames[0]];
     const raw_data = XLSX.utils.sheet_to_json(worksheet, {header: 1});
     
-    var i = 0;
+    let i = 0;
     raw_data.forEach(row => {
       row.forEach(element => {
         if(i % 7 != 0 && i % 7 != 6) AddToList(element);
@@ -212,7 +233,7 @@ function replaceArrayInString(str, arr, replacement){
 function AddToList(pokemonName) {
   wordsToRemove = ["-antique","-artisan","-masterpiece","--own-tempo"]
   pokemonNameImg=replaceArrayInString(pokemonName,wordsToRemove,"")
-  const $boxes = document.querySelector('.boxes');
+  
   pokemonCount++;
   
 
@@ -295,7 +316,7 @@ function removeBox() {
     boxToRemove = null;
     dialogClose('removeBoxDialog');
     const boxTitles = document.querySelectorAll(".boxTitle")
-    var boxNrTemp = 1
+    let boxNrTemp = 1
     boxTitles.forEach(title => {
       title.innerHTML=`Box ${boxNrTemp}`
       title.nextElementSibling.nextElementSibling.classList = `box box${boxNrTemp}`
@@ -457,14 +478,14 @@ function makeSlotsDraggable(slot) {
 
 //Download excel elements
     function map(arrayLike, fn) {
-        var ret = [], i = -1, len = arrayLike.length;
+        let ret = [], i = -1, len = arrayLike.length;
         while (++i < len) ret[i] = fn(arrayLike[i]);
         return ret;
     }
 
     function getText(node) {
         if (node.nodeType === 3) return node.data;
-        var txt = '';
+        let txt = '';
         if (node = node.firstChild) do {
             txt += getText(node);
         } while (node = node.nextSibling);
@@ -476,7 +497,7 @@ function removeFromList(){
     console.log('test')
     
       this.parentNode.remove()
-      var $box = $(`.box${boxCount}`)
+      let $box = $(`.box${boxCount}`)
       $box.append(`
         <div class="slot emptySlot">
         </div>`)
